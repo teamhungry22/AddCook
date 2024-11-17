@@ -1,14 +1,11 @@
-package io.hungry22.addcook.api.event;
+package com.github.teamhungry22.addcook.api.event;
 
-import io.hungry22.addcook.AddCook;
-import io.hungry22.addcook.api.util.AddCookUtils;
-import io.hungry22.addcook.core.util.ItemUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import io.hungry22.addcook.api.object.AddCookEntity;
+import com.github.teamhungry22.addcook.core.entity.AddCookEntity;
 import org.bukkit.inventory.ItemStack;
 
 public class MaterialAddEvent extends Event implements Cancellable {

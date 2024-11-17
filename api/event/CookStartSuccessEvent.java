@@ -1,28 +1,27 @@
-package io.hungry22.addcook.api.event;
+package com.github.teamhungry22.addcook.api.event;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import io.hungry22.addcook.api.object.AddCookEntity;
-import io.hungry22.addcook.api.object.AddCookRecipe;
-import io.hungry22.addcook.api.object.CookResult;
-
-import javax.annotation.Nullable;
+import com.github.teamhungry22.addcook.core.entity.AddCookEntity;
+import com.github.teamhungry22.addcook.core.config.RecipeData;
+import com.github.teamhungry22.addcook.core.listener.addcook.CookResult;
+import org.jetbrains.annotations.Nullable;
 
 public class CookStartSuccessEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final AddCookEntity addCookEntity;
-    private final AddCookRecipe addCookRecipe;
+    private final RecipeData recipeData;
     private final CookResult cookResult;
     private boolean isCancelled;
 
-    public CookStartSuccessEvent(Player player, AddCookEntity addCookEntity, @Nullable AddCookRecipe addCookRecipe, CookResult result) {
+    public CookStartSuccessEvent(Player player, AddCookEntity addCookEntity, @Nullable RecipeData recipeData, CookResult result) {
         this.player = player;
         this.addCookEntity = addCookEntity;
-        this.addCookRecipe = addCookRecipe;
+        this.recipeData = recipeData;
         this.cookResult = result;
         this.isCancelled = false;
     }
@@ -36,8 +35,8 @@ public class CookStartSuccessEvent extends Event implements Cancellable {
     }
 
     @Nullable
-    public AddCookRecipe getRecipe() {
-        return addCookRecipe;
+    public RecipeData getRecipe() {
+        return recipeData;
     }
 
     public CookResult getCookResult() {

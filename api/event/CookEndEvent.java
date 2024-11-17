@@ -1,29 +1,33 @@
-package io.hungry22.addcook.api.event;
+package com.github.teamhungry22.addcook.api.event;
 
-import io.hungry22.addcook.api.object.AddCookEntity;
-import io.hungry22.addcook.api.object.AddCookRecipe;
-import io.hungry22.addcook.api.object.CookResult;
+import com.github.teamhungry22.addcook.core.entity.AddCookEntity;
+import com.github.teamhungry22.addcook.core.config.RecipeData;
+import com.github.teamhungry22.addcook.api.line.Line;
+import com.github.teamhungry22.addcook.core.listener.addcook.CookResult;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
+import java.util.List;
 
 public class CookEndEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final AddCookEntity addCookEntity;
-    private final AddCookRecipe addCookRecipe;
+    private final RecipeData recipeData;
     private final CookResult cookResult;
+    private final List<Line> lineList;
     private boolean isCancelled;
 
-    public CookEndEvent(Player player, AddCookEntity addCookEntity, @Nullable AddCookRecipe addCookRecipe, CookResult result) {
+    public CookEndEvent(Player player, AddCookEntity addCookEntity, @Nullable RecipeData recipeData, CookResult result, List<Line> lineList) {
         this.player = player;
         this.addCookEntity = addCookEntity;
-        this.addCookRecipe = addCookRecipe;
+        this.recipeData = recipeData;
         this.cookResult = result;
+        this.lineList = lineList;
         this.isCancelled = false;
     }
 
@@ -36,8 +40,12 @@ public class CookEndEvent extends Event implements Cancellable {
     }
 
     @Nullable
-    public AddCookRecipe getRecipe() {
-        return addCookRecipe;
+    public RecipeData getRecipe() {
+        return recipeData;
+    }
+
+    public List<Line> getLineList() {
+        return lineList;
     }
 
     public CookResult getCookResult() {

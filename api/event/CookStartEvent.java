@@ -1,11 +1,11 @@
-package io.hungry22.addcook.api.event;
+package com.github.teamhungry22.addcook.api.event;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import io.hungry22.addcook.api.object.AddCookEntity;
+import com.github.teamhungry22.addcook.core.entity.AddCookEntity;
 
 public class CookStartEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
